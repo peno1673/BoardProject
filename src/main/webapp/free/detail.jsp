@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,8 @@
 		<div>작성자 ${free.writer}</div>
 		<div>작성IP ${free.ip}</div>
 		<div>조회수 ${free.hit}</div>
-		<div>제목<input type="text" id="title" name="title" placeholder="워크샵공지"></div>
+		<div>제목<input type="text" id="title" name="title"  value="${free.title}" placeholder="워크샵공지"></div>
+		<input type="hidden" id="freeNo" name="freeNo" value="${free.freeNo}">
 		<textarea rows="2" cols="20" placeholder="첨부파일을 확인해주세요"></textarea>
 
 		<div>

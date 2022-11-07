@@ -10,11 +10,11 @@
 <script>
 	
 	
-	/* location.href = '${contextPath}/BoardProject/list.do';  */
+location.href = '${contextPath}/BoardProject/list.do';  
 	/* location.href = "${contextPath}/BoardProject/list.do";  */
 </script>
 </head>
 <body>
-	<a href= "${contextPath}/BoardProject/list.do">프리 리스트</a>
+	<%-- <a href= "${contextPath}/BoardProject/list.do">프리 리스트</a> --%>
 </body>
 </html>

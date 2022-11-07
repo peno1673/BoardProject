@@ -12,6 +12,7 @@ import common.ActionForward;
 import service.FreeAddService;
 import service.FreeDetailService;
 import service.FreeListService;
+import service.FreeModifyService;
 import service.FreeRemoveService;
 import service.FreeService;
 
@@ -47,6 +48,9 @@ public class FreeController extends HttpServlet {
 			break;
 		case "/BoardProject/detail.do":
 			service = new FreeDetailService();
+			break;
+		case "/BoardProject/edit.do":
+			service = new FreeModifyService();
 			break;
 			
 		case "/BoardProject/insertPage.do":

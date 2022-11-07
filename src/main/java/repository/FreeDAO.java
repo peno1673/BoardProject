@@ -68,4 +68,32 @@ public class FreeDAO {
 		return free;
 	}
 	
+	public int updateFree(Free free) {
+		SqlSession ss = factory.openSession(false);  // UPDATE(커밋이 필요한 경우)
+		int result = ss.update(mapper +"updateFree", free);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	
+	public Free selectFreeTop() {
+		SqlSession ss = factory.openSession();
+		Free top = ss.selectOne(mapper + "selectFreeTop");
+		ss.close();
+		return top;
+	}
+	
+	public int updateHit(int freeNo) {
+		
+		SqlSession ss = factory.openSession();
+		int result = ss.update(mapper + "updateHit" ,  freeNo);
+		if(result > 0) {
+			ss.commit();
+		}
+		ss.close();
+		return result;
+	}
+	
 }

@@ -44,7 +44,7 @@ public class FreeListener implements ServletContextListener {
 					.build();
 			Trigger trigger = TriggerBuilder.newTrigger()
 					.withIdentity("trigger1", "group1")
-					.withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * * * ?"))
+					.withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
 					.build();
 			scheduler.scheduleJob(job, trigger);
 			scheduler.start();
@@ -52,5 +52,5 @@ public class FreeListener implements ServletContextListener {
 			e.printStackTrace();
 		}
 	}
-	
+//	.withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * * * ?"))
 }

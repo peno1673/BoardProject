@@ -13,9 +13,9 @@
 	
 	<insert id="insertFree" parameterType="Free">
 		INSERT INTO FREE
-			(FREENO, TITLE, CONTENT, WRITER)
+			(FREENO, TITLE, CONTENT, WRITER, IP  )
 		VALUES
-			(FREE_SEQ.NEXTVAL, #{title}, #{content}, #{writer})
+			(FREE_SEQ.NEXTVAL, #{title}, #{content}, #{writer}, #{ip} )
 	</insert>
 	
 	<delete id="deleteFree" parameterType="int">
@@ -30,5 +30,25 @@
 		WHERE FREENO = #{freeNo}
 	
 	</select>
+	
+	<update id="updateFree" parameterType="Free">
+		UPDATE FREE
+		   SET TITLE = #{title}
+		 WHERE FREENO = #{freeNo}
+	</update>
+	
+	<select id="selectFreeTop" resultType="Free">
+		
+		SELECT A.RANK, A.FREENO, A.WRITER, A.TITLE, A.IP, A.HIT, A.CONTENT
+		FROM (SELECT RANK() OVER(ORDER BY HIT DESC) AS RANK, FREENO, WRITER, TITLE, IP, HIT, CONTENT
+			FROM FREE) A
+		WHERE A.RANK <![CDATA[ = ]]> 1
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		UPDATE FREE
+		   SET HIT = #{hit}+1
+		 WHERE FREENO = #{freeNo}
+	</update>
 	
 </mapper>

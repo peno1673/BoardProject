@@ -16,14 +16,12 @@ public class FreeAddService implements FreeService {
 		String writer = request.getParameter("writer");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
-		System.out.println(writer);
-		System.out.println(title);
-		System.out.println(content);
+		String ip = request.getRemoteAddr();
 		Free free = new Free();
 		free.setTitle(title);
 		free.setContent(content);
 		free.setWriter(writer);
+		free.setIp(ip);
 
 		int result = FreeDAO.getInstance().insertFree(free);
 
